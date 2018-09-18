@@ -10,48 +10,48 @@
     <com.example.snake.SnakeGridView
         android:id="@+id/snake"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/button_down"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:onClick="onClick"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button_right" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <ImageButton
         android:id="@+id/button_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
         android:onClick="onClick"
-        app:layout_constraintBottom_toTopOf="@+id/button_down"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/snake"
+        app:srcCompat="@drawable/baseline_arrow_right_alt_black_24dp" />
 
-    <Button
+    <ImageButton
+        android:id="@+id/button_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        app:layout_constraintEnd_toStartOf="@+id/button_right"
+        app:layout_constraintTop_toBottomOf="@+id/button_right"
+        app:srcCompat="@drawable/baseline_arrow_down_alt_black_24dp" />
+
+    <ImageButton
         android:id="@+id/button_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:onClick="onClick"
         app:layout_constraintBottom_toTopOf="@+id/button_right"
-        app:layout_constraintStart_toStartOf="@+id/button_down" />
+        app:layout_constraintEnd_toStartOf="@+id/button_right"
+        app:srcCompat="@drawable/baseline_arrow_up_alt_black_24dp" />
 
-    <Button
+    <ImageButton
         android:id="@+id/button_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
         android:onClick="onClick"
-        app:layout_constraintEnd_toStartOf="@+id/button_down"
-        app:layout_constraintTop_toBottomOf="@+id/button_up" />
+        app:layout_constraintBottom_toTopOf="@+id/button_down"
+        app:layout_constraintEnd_toStartOf="@+id/button_up"
+        app:srcCompat="@drawable/baseline_arrow_left_alt_black_24dp" />
 
 </android.support.constraint.ConstraintLayout>

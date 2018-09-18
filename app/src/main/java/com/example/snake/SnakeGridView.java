@@ -12,6 +12,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import java.util.LinkedList;
+import java.util.Locale;
 import java.util.Random;
 
 public class SnakeGridView extends View {
@@ -42,6 +43,7 @@ public class SnakeGridView extends View {
     private Point foodPoint = new Point();
     private boolean isFood = false;
     private boolean isGameRunning = false;
+    private int snakeLen;
 
     public SnakeGridView(Context context) {
         super(context);
@@ -87,6 +89,11 @@ public class SnakeGridView extends View {
     }
 
     private void init(){
+
+        snakePoints.clear();
+        isFood = false;
+        snakeLen = 3;
+
         INITIAL_GRID_COLOR = new int[GRID_NUM][GRID_NUM];
         for(int i = 0; i < GRID_NUM; i++){
             for(int j = 0; j < GRID_NUM; j++) {
@@ -129,27 +136,32 @@ public class SnakeGridView extends View {
         switch (snakeDirection){
             case DIRECTION_UP:
                 newPoint = new Point(currentHeadPos.x, currentHeadPos.y + 1);
+                isGameOver(newPoint);
                 snakePoints.addFirst(newPoint);
                 gridColor[newPoint.x][newPoint.y] = COLOR_SNAKE;
                 break;
             case DIRECTION_DOWN:
                 newPoint = new Point(currentHeadPos.x, currentHeadPos.y - 1);
+                isGameOver(newPoint);
                 snakePoints.addFirst(newPoint);
                 gridColor[newPoint.x][newPoint.y] = COLOR_SNAKE;
                 break;
             case DIRECTION_LEFT:
                 newPoint = new Point(currentHeadPos.x - 1, currentHeadPos.y);
+                isGameOver(newPoint);
                 snakePoints.addFirst(newPoint);
                 gridColor[newPoint.x][newPoint.y] = COLOR_SNAKE;
                 break;
             case DIRECTION_RIGHT:
                 newPoint = new Point(currentHeadPos.x + 1, currentHeadPos.y);
+                isGameOver(newPoint);
                 snakePoints.addFirst(newPoint);
                 gridColor[newPoint.x][newPoint.y] = COLOR_SNAKE;
                 break;
         }
         if(isEating()) {
             isFood = false;
+            snakeLen++;
         } else{
             Point point = snakePoints.removeLast();
             gridColor[point.x][point.y] = COLOR_GRID;
@@ -159,6 +171,10 @@ public class SnakeGridView extends View {
     private boolean isEating(){
         Point currentHeadPos = snakePoints.getFirst();
         return currentHeadPos.equals(foodPoint);
+    }
+
+    private void isGameOver(Point point) throws Exception{
+        if(gridColor[point.x][point.y] == COLOR_SNAKE) throw new Exception();
     }
 
     private void gameOver() {
@@ -171,6 +187,7 @@ public class SnakeGridView extends View {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
+                                init();
                             }
                         })
                         .setNegativeButton(getResources().getString(R.string.dialog_negative), new DialogInterface.OnClickListener() {
@@ -179,6 +196,7 @@ public class SnakeGridView extends View {
                                 dialog.dismiss();
                             }
                         })
+                        .setMessage(String.format(Locale.CHINA, getResources().getString(R.string.dialog_result), snakeLen))
                         .create()
                         .show();
             }
