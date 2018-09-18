@@ -229,6 +229,7 @@ public class SnakeGridView extends View {
     }
 
     public void start(){
+        if(isGameRunning) return;
         isGameRunning = true;
         new GameThread().start();
     }

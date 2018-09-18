@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">贪吃蛇</string>
+    <string name="dialog_positive">重新开始</string>
+    <string name="dialog_negative">取消</string>
+    <string name="dialog_result">您的最终得分：%d</string>
+    <string name="button_start">开始游戏</string>
+    <string name="dialog_msg">Game Over!</string>
+</resources>
