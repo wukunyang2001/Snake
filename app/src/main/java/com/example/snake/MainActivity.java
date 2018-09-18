@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
             case R.id.button_right:
                 snakeGridView.setSnakeDirection(DIRECTION_UP);
                 break;
+            case R.id.button:
+                snakeGridView.start();
         }
     }
 }

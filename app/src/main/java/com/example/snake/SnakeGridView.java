@@ -93,6 +93,7 @@ public class SnakeGridView extends View {
         snakePoints.clear();
         isFood = false;
         snakeLen = 3;
+        isGameRunning = false;
 
         INITIAL_GRID_COLOR = new int[GRID_NUM][GRID_NUM];
         for(int i = 0; i < GRID_NUM; i++){
@@ -111,8 +112,6 @@ public class SnakeGridView extends View {
         }
 
         generateFood();
-
-        test();
 
     }
 
@@ -181,13 +180,14 @@ public class SnakeGridView extends View {
         post(new Runnable() {
             @Override
             public void run() {
-                new AlertDialog.Builder(getContext()).setMessage(getResources().getString(R.string.dialog_msg))
+                new AlertDialog.Builder(getContext()).setTitle(getResources().getString(R.string.dialog_msg))
                         .setCancelable(false)
                         .setPositiveButton(getResources().getString(R.string.dialog_positive), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
                                 init();
+                                start();
                             }
                         })
                         .setNegativeButton(getResources().getString(R.string.dialog_negative), new DialogInterface.OnClickListener() {
@@ -228,7 +228,7 @@ public class SnakeGridView extends View {
         }
     }
 
-    private void test(){
+    public void start(){
         isGameRunning = true;
         new GameThread().start();
     }
