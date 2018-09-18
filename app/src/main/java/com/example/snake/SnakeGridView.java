@@ -215,4 +215,8 @@ public class SnakeGridView extends View {
         new GameThread().start();
     }
 
+    public void setSnakeDirection(int direction){
+        snakeDirection = direction;
+    }
+
 }
