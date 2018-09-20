@@ -6,4 +6,11 @@
     <string name="dialog_result">Your final Score: %d</string>
     <string name="button_start">Start</string>
     <string name="action_settings">Settings</string>
+    <string name="color_red">red</string>
+    <string name="color_yellow">yellow</string>
+    <string name="color_green">green</string>
+    <string name="color_blue">blue</string>
+    <string name="color_gray">gray</string>
+    <string name="color_black">black</string>
+    <string name="color_white">white</string>
 </resources>
