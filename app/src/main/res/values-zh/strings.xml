@@ -6,4 +6,5 @@
     <string name="dialog_result">您的最终得分：%d</string>
     <string name="button_start">开始游戏</string>
     <string name="dialog_msg">Game Over!</string>
+    <string name="action_settings">设置</string>
 </resources>
