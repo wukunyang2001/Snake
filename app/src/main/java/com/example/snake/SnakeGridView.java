@@ -93,12 +93,12 @@ public class SnakeGridView extends View {
     private void init(){
 
         sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
-        GRID_NUM = Integer.valueOf(sharedPref.getString("pref_key_grid_num", ""));
-        SNAKE_SPEED = Integer.valueOf(sharedPref.getString("pref_key_snake_speed", ""));
-        COLOR_GRID = Integer.valueOf(sharedPref.getString("pref_key_color_grid", ""));
-        COLOR_SNAKE = Integer.valueOf(sharedPref.getString("pref_key_color_snake", ""));
-        COLOR_FOOD = Integer.valueOf(sharedPref.getString("pref_key_color_food", ""));
-        COLOR_GRID_LINE = Integer.valueOf(sharedPref.getString("pref_key_color_grid_line", ""));
+        GRID_NUM = Integer.valueOf(sharedPref.getString("pref_key_grid_num", "15"));
+        SNAKE_SPEED = Integer.valueOf(sharedPref.getString("pref_key_snake_speed", "6"));
+        COLOR_GRID = Integer.valueOf(sharedPref.getString("pref_key_color_grid", "-1"));
+        COLOR_SNAKE = Integer.valueOf(sharedPref.getString("pref_key_color_snake", "-16776961"));
+        COLOR_FOOD = Integer.valueOf(sharedPref.getString("pref_key_color_food", "-65536"));
+        COLOR_GRID_LINE = Integer.valueOf(sharedPref.getString("pref_key_color_grid_line", "-7829368"));
 
         snakePoints.clear();
         isFood = false;

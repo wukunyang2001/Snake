@@ -6,12 +6,12 @@
             android:title="@string/snake_speed"
             android:key="pref_key_snake_speed"
             android:inputType="number"
-            android:defaultValue="7"/>
+            android:defaultValue="6"/>
         <EditTextPreference
             android:title="@string/grid_num"
             android:key="pref_key_grid_num"
             android:inputType="number"
-            android:defaultValue="20"/>
+            android:defaultValue="15"/>
     </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/settings_color">
