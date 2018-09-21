@@ -13,4 +13,12 @@
     <string name="color_gray">gray</string>
     <string name="color_black">black</string>
     <string name="color_white">white</string>
+    <string name="settings_game">Game Settings</string>
+    <string name="snake_speed">Snake Speed</string>
+    <string name="grid_num">Grid Side Length</string>
+    <string name="settings_color">Color Settings</string>
+    <string name="color_grid">Grid Color</string>
+    <string name="color_grid_line">Grid Line Color</string>
+    <string name="color_snake">Snake Color</string>
+    <string name="color_food">Food Color</string>
 </resources>

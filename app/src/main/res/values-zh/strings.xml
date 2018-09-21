@@ -14,4 +14,12 @@
     <string name="color_gray">灰</string>
     <string name="color_black">黑</string>
     <string name="color_white">白</string>
+    <string name="settings_game">游戏设置</string>
+    <string name="snake_speed">移动速度</string>
+    <string name="grid_num">网格边长</string>
+    <string name="settings_color">颜色设置</string>
+    <string name="color_grid">网格颜色</string>
+    <string name="color_grid_line">网格线颜色</string>
+    <string name="color_snake">蛇身颜色</string>
+    <string name="color_food">食物颜色</string>
 </resources>

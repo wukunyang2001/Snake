@@ -17,13 +17,13 @@ import java.util.Random;
 
 public class SnakeGridView extends View {
 
-    //consts
-    private final int GRID_NUM = 25;
-    private final int SNAKE_SPEED = 8;
-    private final int COLOR_GRID = Color.WHITE;
-    private final int COLOR_SNAKE = Color.BLUE;
-    private final int COLOR_FOOD = Color.RED;
-    private final int COLOR_GRID_LINE = Color.GRAY;
+    //preferences
+    private int GRID_NUM = 25;
+    private int SNAKE_SPEED = 8;
+    private int COLOR_GRID = Color.WHITE;
+    private int COLOR_SNAKE = Color.BLUE;
+    private int COLOR_FOOD = Color.RED;
+    private int COLOR_GRID_LINE = Color.GRAY;
 
     private final int DIRECTION_UP = 100;
     private final int DIRECTION_DOWN = -100;
