@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.preference.PreferenceManager;
@@ -23,12 +22,12 @@ public class SnakeGridView extends View {
     SharedPreferences sharedPref;
 
     //preferences
-    private int GRID_NUM = 20;
-    private int SNAKE_SPEED = 8;
-    private int COLOR_GRID = Color.WHITE;
-    private int COLOR_SNAKE = Color.BLUE;
-    private int COLOR_FOOD = Color.RED;
-    private int COLOR_GRID_LINE = Color.GRAY;
+    private int GRID_NUM;
+    private int SNAKE_SPEED;
+    private int COLOR_GRID;
+    private int COLOR_SNAKE;
+    private int COLOR_FOOD;
+    private int COLOR_GRID_LINE;
 
     private final int DIRECTION_UP = 100;
     private final int DIRECTION_DOWN = -100;
@@ -52,20 +51,18 @@ public class SnakeGridView extends View {
 
     public SnakeGridView(Context context) {
         super(context);
-        init();
     }
     public SnakeGridView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        init();
     }
     public SnakeGridView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        init();
         int canvasSize = getMeasuredWidth();
         gridSize = (float) canvasSize / GRID_NUM;
         setMeasuredDimension(canvasSize, canvasSize);
@@ -96,12 +93,12 @@ public class SnakeGridView extends View {
     private void init(){
 
         sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
-//        GRID_NUM = sharedPref.getInt("pref_key_grid_num", 20);
-//        SNAKE_SPEED = sharedPref.getInt("pref_key_snake_speed", 7);
-//        COLOR_GRID = sharedPref.getInt("pref_key_color_grid", Color.WHITE);
-//        COLOR_SNAKE = sharedPref.getInt("pref_key_color_snake", Color.BLUE);
-//        COLOR_FOOD = sharedPref.getInt("pref_key_color_food", Color.RED);
-//        COLOR_GRID_LINE = sharedPref.getInt("pref_key_color_grid_line", Color.GRAY);
+        GRID_NUM = Integer.valueOf(sharedPref.getString("pref_key_grid_num", ""));
+        SNAKE_SPEED = Integer.valueOf(sharedPref.getString("pref_key_snake_speed", ""));
+        COLOR_GRID = Integer.valueOf(sharedPref.getString("pref_key_color_grid", ""));
+        COLOR_SNAKE = Integer.valueOf(sharedPref.getString("pref_key_color_snake", ""));
+        COLOR_FOOD = Integer.valueOf(sharedPref.getString("pref_key_color_food", ""));
+        COLOR_GRID_LINE = Integer.valueOf(sharedPref.getString("pref_key_color_grid_line", ""));
 
         snakePoints.clear();
         isFood = false;
