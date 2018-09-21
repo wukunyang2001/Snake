@@ -3,10 +3,12 @@ package com.example.snake;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -15,10 +17,13 @@ import java.util.LinkedList;
 import java.util.Locale;
 import java.util.Random;
 
+@SuppressWarnings("FieldCanBeLocal")
 public class SnakeGridView extends View {
 
+    SharedPreferences sharedPref;
+
     //preferences
-    private int GRID_NUM = 25;
+    private int GRID_NUM = 20;
     private int SNAKE_SPEED = 8;
     private int COLOR_GRID = Color.WHITE;
     private int COLOR_SNAKE = Color.BLUE;
@@ -89,6 +94,14 @@ public class SnakeGridView extends View {
     }
 
     private void init(){
+
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
+//        GRID_NUM = sharedPref.getInt("pref_key_grid_num", 20);
+//        SNAKE_SPEED = sharedPref.getInt("pref_key_snake_speed", 7);
+//        COLOR_GRID = sharedPref.getInt("pref_key_color_grid", Color.WHITE);
+//        COLOR_SNAKE = sharedPref.getInt("pref_key_color_snake", Color.BLUE);
+//        COLOR_FOOD = sharedPref.getInt("pref_key_color_food", Color.RED);
+//        COLOR_GRID_LINE = sharedPref.getInt("pref_key_color_grid_line", Color.GRAY);
 
         snakePoints.clear();
         isFood = false;
