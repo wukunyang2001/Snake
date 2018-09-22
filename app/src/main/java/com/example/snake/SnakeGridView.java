@@ -113,9 +113,9 @@ public class SnakeGridView extends View {
         }
         gridColor = INITIAL_GRID_COLOR;
 
-        snakePoints.add(new Point(12, 10));
-        snakePoints.add(new Point(11, 10));
-        snakePoints.add(new Point(10, 10));
+        snakePoints.add(new Point(6, 5));
+        snakePoints.add(new Point(5, 5));
+        snakePoints.add(new Point(4, 5));
         snakeDirection = DIRECTION_RIGHT;
         for(Point point : snakePoints){
             gridColor[point.x][point.y] = COLOR_SNAKE;
