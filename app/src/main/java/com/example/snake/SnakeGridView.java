@@ -46,7 +46,7 @@ public class SnakeGridView extends View {
     private int snakeDirection;
     private Point foodPoint = new Point();
     private boolean isFood = false;
-    private boolean isGameRunning = false;
+    public boolean isGameRunning = false;
     private int snakeLen;
 
     public SnakeGridView(Context context) {
@@ -90,7 +90,7 @@ public class SnakeGridView extends View {
         }
     }
 
-    private void init(){
+    public void init(){
 
         sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
         GRID_NUM = Integer.valueOf(sharedPref.getString("pref_key_grid_num", "15"));
@@ -121,11 +121,9 @@ public class SnakeGridView extends View {
             gridColor[point.x][point.y] = COLOR_SNAKE;
         }
 
-        generateFood();
-
     }
 
-    private void generateFood(){
+    public void generateFood(){
         if(isFood) return;
         isFood = true;
         Random random = new Random();
@@ -197,6 +195,7 @@ public class SnakeGridView extends View {
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
                                 init();
+                                generateFood();
                                 start();
                             }
                         })
@@ -204,6 +203,7 @@ public class SnakeGridView extends View {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
+                                isGameRunning = false;
                             }
                         })
                         .setMessage(String.format(Locale.CHINA, getResources().getString(R.string.dialog_result), snakeLen))

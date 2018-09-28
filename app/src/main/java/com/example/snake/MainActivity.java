@@ -43,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
                 snakeGridView.setSnakeDirection(DIRECTION_UP);
                 break;
             case R.id.button:
+                if(snakeGridView.isGameRunning) break;
+                snakeGridView.init();
+                snakeGridView.generateFood();
                 snakeGridView.start();
         }
     }
