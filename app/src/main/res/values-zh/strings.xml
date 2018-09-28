@@ -4,7 +4,7 @@
     <string name="dialog_positive">重新开始</string>
     <string name="dialog_negative">取消</string>
     <string name="dialog_result">您的最终得分：%d</string>
-    <string name="button_start">开始游戏</string>
+    <string name="button_start">开始</string>
     <string name="dialog_msg">Game Over!</string>
     <string name="action_settings">设置</string>
     <string name="color_red">红</string>
@@ -22,4 +22,6 @@
     <string name="color_grid_line">网格线颜色</string>
     <string name="color_snake">蛇身颜色</string>
     <string name="color_food">食物颜色</string>
+    <string name="button_pause">暂停</string>
+    <string name="button_resume">继续</string>
 </resources>

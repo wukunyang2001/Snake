@@ -21,4 +21,6 @@
     <string name="color_grid_line">Grid Line Color</string>
     <string name="color_snake">Snake Color</string>
     <string name="color_food">Food Color</string>
+    <string name="button_pause">Pause</string>
+    <string name="button_resume">Resume</string>
 </resources>

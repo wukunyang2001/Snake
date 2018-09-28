@@ -6,7 +6,7 @@
             android:title="@string/snake_speed"
             android:key="pref_key_snake_speed"
             android:inputType="number"
-            android:defaultValue="6"/>
+            android:defaultValue="5"/>
         <EditTextPreference
             android:title="@string/grid_num"
             android:key="pref_key_grid_num"

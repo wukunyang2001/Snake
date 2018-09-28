@@ -11,6 +11,7 @@ import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.Button;
 
 import java.util.LinkedList;
 import java.util.Locale;
@@ -47,7 +48,9 @@ public class SnakeGridView extends View {
     private Point foodPoint = new Point();
     private boolean isFood = false;
     public boolean isGameRunning = false;
+    public boolean isGameOver = true;
     private int snakeLen;
+    private Button button;
 
     public SnakeGridView(Context context) {
         super(context);
@@ -94,7 +97,7 @@ public class SnakeGridView extends View {
 
         sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
         GRID_NUM = Integer.valueOf(sharedPref.getString("pref_key_grid_num", "15"));
-        SNAKE_SPEED = Integer.valueOf(sharedPref.getString("pref_key_snake_speed", "6"));
+        SNAKE_SPEED = Integer.valueOf(sharedPref.getString("pref_key_snake_speed", "5"));
         COLOR_GRID = Integer.valueOf(sharedPref.getString("pref_key_color_grid", "-1"));
         COLOR_SNAKE = Integer.valueOf(sharedPref.getString("pref_key_color_snake", "-16776961"));
         COLOR_FOOD = Integer.valueOf(sharedPref.getString("pref_key_color_food", "-65536"));
@@ -104,6 +107,7 @@ public class SnakeGridView extends View {
         isFood = false;
         snakeLen = 3;
         isGameRunning = false;
+        isGameOver = true;
 
         INITIAL_GRID_COLOR = new int[GRID_NUM][GRID_NUM];
         for(int i = 0; i < GRID_NUM; i++){
@@ -194,6 +198,7 @@ public class SnakeGridView extends View {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
+                                button.setText(R.string.button_pause);
                                 init();
                                 generateFood();
                                 start();
@@ -203,7 +208,9 @@ public class SnakeGridView extends View {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
+                                button.setText(R.string.button_start);
                                 isGameRunning = false;
+                                isGameOver = true;
                             }
                         })
                         .setMessage(String.format(Locale.CHINA, getResources().getString(R.string.dialog_result), snakeLen))
@@ -211,6 +218,10 @@ public class SnakeGridView extends View {
                         .show();
             }
         });
+    }
+
+    public void setButton(Button button) {
+        this.button = button;
     }
 
     private class GameThread extends Thread{
@@ -241,10 +252,12 @@ public class SnakeGridView extends View {
     public void start(){
         if(isGameRunning) return;
         isGameRunning = true;
+        isGameOver = false;
         new GameThread().start();
     }
 
     public void setSnakeDirection(int direction){
+        if(!isGameRunning) return;
         snakeDirection = direction;
     }
 

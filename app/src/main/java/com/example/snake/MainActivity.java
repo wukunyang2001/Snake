@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 @SuppressWarnings("FieldCanBeLocal")
 public class MainActivity extends AppCompatActivity {
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         snakeGridView = findViewById(R.id.snake);
+        snakeGridView.setButton((Button)findViewById(R.id.button));
 
     }
 
@@ -43,10 +45,21 @@ public class MainActivity extends AppCompatActivity {
                 snakeGridView.setSnakeDirection(DIRECTION_UP);
                 break;
             case R.id.button:
-                if(snakeGridView.isGameRunning) break;
-                snakeGridView.init();
-                snakeGridView.generateFood();
-                snakeGridView.start();
+                Button myButton = (Button) button;
+                if (!snakeGridView.isGameRunning && !snakeGridView.isGameOver){
+                    //paused, need to resume
+                    snakeGridView.start();
+                    myButton.setText(R.string.button_pause);
+                } else if (snakeGridView.isGameRunning && !snakeGridView.isGameOver){
+                    //game is running, need to pause
+                    snakeGridView.isGameRunning = false;
+                    myButton.setText(R.string.button_resume);
+                } else {
+                    snakeGridView.init();
+                    snakeGridView.generateFood();
+                    snakeGridView.start();
+                    myButton.setText(R.string.button_pause);
+                }
         }
     }
 
